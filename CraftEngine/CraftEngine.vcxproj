@@ -92,7 +92,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -117,7 +117,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -142,9 +142,18 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll .. \bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\CraftEngine\CraftEngine.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CraftEngine.h" />
+    <ClInclude Include="src\Engine\Application.h" />
+    <ClInclude Include="src\Engine\Core.h" />
+    <ClInclude Include="src\Engine\EntryPoint.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Engine\Application.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

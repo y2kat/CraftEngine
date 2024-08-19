@@ -137,6 +137,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sandbox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CraftEngine\CraftEngine.vcxproj">
       <Project>{2BC61B6F-977B-9464-2070-8E3B8C248B68}</Project>
     </ProjectReference>
