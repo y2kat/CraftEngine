@@ -28,8 +28,9 @@ project "CraftEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
+		cppdialect "C++20"
+		staticruntime "off"
+		runtime "Release"
 		systemversion "latest"
 
 		defines{
@@ -56,7 +57,7 @@ project "CraftEngine"
 
 project "Sandbox"
 	location "Sandbox"
-	kind "SharedLib"
+	kind "ConsoleApp"
 	language "C++"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -76,8 +77,9 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
+		cppdialect "C++20"
+		staticruntime "off"
+		runtime "Release"
 		systemversion "latest"
 
 		defines{

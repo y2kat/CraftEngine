@@ -12,6 +12,6 @@ public:
 	}
 };
 
-Craft::Application* CreateApplication() {
+Craft::Application* Craft::CreateApplication() {
 	return new Sandbox();
 }
