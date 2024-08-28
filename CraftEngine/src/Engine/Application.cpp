@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "craftpch.h"
 namespace Craft {
 	Application::Application() {
 

@@ -1,5 +1,5 @@
 #include "Log.h"
-#include <iostream>
+#include "craftpch.h"
 
 Craft::Log::Log(std::string name) {
 	_name = name;
