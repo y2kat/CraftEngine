@@ -10,6 +10,9 @@ workspace "CraftEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "CraftEngine/vendor/GLFW/include"
+
 project "CraftEngine"
 	location "CraftEngine"
 	kind "SharedLib"
@@ -27,7 +30,13 @@ project "CraftEngine"
 	}
 
 	includedirs{
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -47,14 +56,17 @@ project "CraftEngine"
 
 	filter "configurations:Debug"
 		defines "CRAFT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CRAFT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CRAFT_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -91,12 +103,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "CRAFT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CRAFT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CRAFT_DIST"
+		buildoptions "/MD"
 		optimize "On"
