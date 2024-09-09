@@ -9,7 +9,7 @@ namespace Craft {
 		unsigned int Width;
 		unsigned int Height;
 		WindowProps(const std::string title = "Craft engine",
-			unsigned int width, unsigned int height) :
+			unsigned int width = 1280, unsigned int height = 720) :
 			Title(title), Width(width), Height(height){}
 	};
 
@@ -17,8 +17,8 @@ namespace Craft {
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
-		virtual ~Window();
-		virtual void OnUpdate();
+		virtual ~Window() {}
+		virtual void OnUpdate() = 0;
 		virtual unsigned int GetWidth() const = 0;
 		virtual unsigned int GetHeight() const = 0;
 

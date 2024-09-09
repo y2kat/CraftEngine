@@ -1,5 +1,7 @@
-#include "Log.h"
 #include "craftpch.h"
+#include "Log.h"
+
+CRAFT_API Craft::Log* Craft::Log::_globalLog;
 
 Craft::Log::Log(std::string name) {
 	_name = name;
@@ -12,6 +14,11 @@ Craft::Log::Log() {
 }
 
 Craft::Log::~Log() {
+}
+
+void Craft::Log::Init() {
+	if (!_globalLog)
+		_globalLog = new Log("Static Craft Log");
 }
 
 void Craft::Log::Print(std::string text, const char* file, int line) {

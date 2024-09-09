@@ -21,6 +21,10 @@ namespace Craft {
 		Log();
 		~Log();
 
+		static void Init();
+
+		inline static Log* GetLogger() { return _globalLog; }
+
 		void Print(std::string text, const char* file, int line);
 		void Print_Log(std::string text, const char* file, int line);
 		void Print_Info(std::string text, const char* file, int line);
@@ -30,12 +34,16 @@ namespace Craft {
 		std::string _name;
 		HANDLE _hConsole;
 		ConsoleColor _selectedColor = ConsoleColor::GREEN;
+		static Log* _globalLog;
 	};
 }
 
 #define __FILENAME__ (strrchr(__FILE__, '\\') ? strrchr(__FILE__, '\\') + 1 : __FILE__)
-#define LOG(x) log->Print(x, __FILENAME__, __LINE__);
-#define LOG_TEST(...) log -> Print(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
+
+#define LOG(...) Craft::Log::GetLogger()->Print_Log(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
+#define INFO(...) Craft::Log::GetLogger()->Print_Info(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
+#define ERROR(...) Craft::Log::GetLogger()->Print_Error(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
+
 
 #define PRINT_LOG(...) log->Print_Log(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
 #define PRINT_INFO(...) log->Print_Info(std::format(__VA_ARGS__), __FILENAME__, __LINE__);
